@@ -232,7 +232,7 @@ public class DeathMessages extends FoliaWrappedJavaPlugin {
         if (Settings.getInstance().getConfig().getBoolean("Disable-Default-Messages") && majorVersion() >= 13) {
             for (World w : Bukkit.getWorlds()) {
                 if (w.getGameRuleValue(GameRule.SHOW_DEATH_MESSAGES).equals(true)) {
-                    w.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
+                    getScheduler().runTask(() -> w.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false));
                 }
             }
         }
