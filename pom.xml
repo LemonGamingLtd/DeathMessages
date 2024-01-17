@@ -6,7 +6,7 @@
 
     <groupId>net.joshb.deathmessages</groupId>
     <artifactId>DeathMessages</artifactId>
-    <version>1.4.11</version>
+    <version>1.4.11-0.0.1</version>
     <modules>
         <module>DeathMessagesPlugin</module>
         <module>WorldGuard6</module>
@@ -29,7 +29,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>

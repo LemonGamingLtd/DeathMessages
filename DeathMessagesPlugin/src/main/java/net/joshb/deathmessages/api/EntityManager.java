@@ -1,5 +1,7 @@
 package net.joshb.deathmessages.api;
 
+import me.nahu.scheduler.wrapper.runnable.WrappedRunnable;
+import me.nahu.scheduler.wrapper.task.WrappedTask;
 import net.joshb.deathmessages.DeathMessages;
 import net.joshb.deathmessages.config.Settings;
 import net.joshb.deathmessages.enums.MobType;
@@ -7,8 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class EntityManager {
     private Projectile lastPlayerProjectile;
     private Location lastLocation;
 
-    private BukkitTask lastPlayerTask;
+    private WrappedTask lastPlayerTask;
 
     private static final List<EntityManager> entities = new ArrayList<>();
 
@@ -62,7 +62,7 @@ public class EntityManager {
         if (lastPlayerTask != null) {
             lastPlayerTask.cancel();
         }
-        lastPlayerTask = new BukkitRunnable() {
+        lastPlayerTask = new WrappedRunnable() {
             @Override
             public void run() {
                 destroy();

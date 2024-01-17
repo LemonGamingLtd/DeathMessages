@@ -2,6 +2,7 @@ package net.joshb.deathmessages;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import io.lumine.xikage.mythicmobs.MythicMobs;
+import me.nahu.scheduler.wrapper.FoliaWrappedJavaPlugin;
 import net.joshb.deathmessages.api.PlayerManager;
 import net.joshb.deathmessages.command.deathmessages.CommandManager;
 import net.joshb.deathmessages.command.deathmessages.TabCompleter;
@@ -27,7 +28,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.logging.Level;
 
-public class DeathMessages extends JavaPlugin {
+public class DeathMessages extends FoliaWrappedJavaPlugin {
 
     public static DeathMessages plugin;
 
@@ -53,6 +54,7 @@ public class DeathMessages extends JavaPlugin {
 
 
     public void onEnable() {
+        getLogger().info("Successfully initialized scheduler of type:" + getScheduler().getImplementationType());
 
         //Logger log = (Logger) LogManager.getRootLogger();
         //log.addAppender(new SupportLogger());

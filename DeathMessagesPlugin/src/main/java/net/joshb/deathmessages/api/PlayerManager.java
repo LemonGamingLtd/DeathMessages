@@ -1,5 +1,7 @@
 package net.joshb.deathmessages.api;
 
+import me.nahu.scheduler.wrapper.runnable.WrappedRunnable;
+import me.nahu.scheduler.wrapper.task.WrappedTask;
 import net.joshb.deathmessages.DeathMessages;
 import net.joshb.deathmessages.config.Settings;
 import net.joshb.deathmessages.config.UserData;
@@ -11,8 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +33,10 @@ public class PlayerManager {
     private Location explosionCauser;
     private Location location;
     private int cooldown = 0;
-    private BukkitTask cooldownTask;
+    private WrappedTask cooldownTask;
     private Inventory cachedInventory;
 
-    private BukkitTask lastEntityTask;
+    private WrappedTask lastEntityTask;
 
     private static final List<PlayerManager> players = new ArrayList<>();
 
@@ -111,12 +111,12 @@ public class PlayerManager {
         if(lastEntityTask != null){
             lastEntityTask.cancel();
         }
-        lastEntityTask = new BukkitRunnable(){
+        lastEntityTask = new WrappedRunnable(){
             @Override
             public void run() {
                 setLastEntityDamager(null);
             }
-        }.runTaskLater(DeathMessages.plugin, Settings.getInstance().getConfig().getInt("Expire-Last-Damage.Expire-Player") * 20L);
+        }.runTaskLaterAtEntity(DeathMessages.plugin, e, Settings.getInstance().getConfig().getInt("Expire-Last-Damage.Expire-Player") * 20L);
     }
 
     public Entity getLastEntityDamager() {
@@ -161,7 +161,7 @@ public class PlayerManager {
 
     public void setCooldown() {
         cooldown = Settings.getInstance().getConfig().getInt("Cooldown");
-        cooldownTask = new BukkitRunnable(){
+        cooldownTask = new WrappedRunnable(){
             @Override
             public void run() {
                 if(cooldown <= 0){
@@ -169,7 +169,7 @@ public class PlayerManager {
                 }
                 cooldown--;
             }
-        }.runTaskTimer(DeathMessages.plugin, 0, 20);
+        }.runTaskTimer(DeathMessages.plugin, 1, 20);
     }
 
     public void setCachedInventory(Inventory inventory){

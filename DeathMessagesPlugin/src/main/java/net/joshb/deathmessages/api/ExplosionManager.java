@@ -1,9 +1,9 @@
 package net.joshb.deathmessages.api;
 
+import me.nahu.scheduler.wrapper.runnable.WrappedRunnable;
 import net.joshb.deathmessages.DeathMessages;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ExplosionManager {
         explosions.add(this);
 
         //Destroys class. Wont need the info anymore
-        new BukkitRunnable(){
+        new WrappedRunnable(){
             @Override
             public void run() {
                 destroy();
