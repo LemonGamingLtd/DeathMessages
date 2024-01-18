@@ -441,13 +441,13 @@ public class Assets {
         final String affiliation = gang ? DeathAffiliation.GANG.getValue() : DeathAffiliation.SOLO.getValue();
         //List<String> msgs = sortList(getPlayerDeathMessages().getStringList(cMode + "." + affiliation + ".Weapon"), pm.getPlayer());
 
-        Bukkit.broadcastMessage("getWeapon");
-        Bukkit.broadcastMessage(DeathMessages.plugin.mythicmobsEnabled + " - " + DeathMessages.plugin.mythicMobs.getAPIHelper().isMythicMob(mob.getUniqueId()));
+        //Bukkit.broadcastMessage("getWeapon");
+        //Bukkit.broadcastMessage(DeathMessages.plugin.mythicmobsEnabled + " - " + DeathMessages.plugin.mythicMobs.getAPIHelper().isMythicMob(mob.getUniqueId()));
         List<String> msgs;
         if (DeathMessages.plugin.mythicmobsEnabled
                 &&DeathMessages.plugin.mythicMobs.getAPIHelper().isMythicMob(mob.getUniqueId())) {
             String internalMobType = DeathMessages.plugin.mythicMobs.getAPIHelper().getMythicMobInstance(mob).getMobType();
-            Bukkit.broadcastMessage("is myth - " + internalMobType);
+            //Bukkit.broadcastMessage("is myth - " + internalMobType);
             msgs = sortList(getPlayerDeathMessages().getStringList("Custom-Mobs.Mythic-Mobs." + internalMobType + "." + affiliation + ".Weapon"), pm.getPlayer(), mob);
         } else {
             msgs = sortList(getPlayerDeathMessages().getStringList(cMode + "." + affiliation + ".Weapon"), pm.getPlayer(), mob);
@@ -660,12 +660,12 @@ public class Assets {
 
         // List<String> msgs = sortList(getPlayerDeathMessages().getStringList(cMode + "." + affiliation + "." + damageCause), pm.getPlayer());
 
-        Bukkit.broadcastMessage("get");
+        //Bukkit.broadcastMessage("get");
         List<String> msgs;
         if (DeathMessages.plugin.mythicmobsEnabled
                 && DeathMessages.plugin.mythicMobs.getAPIHelper().isMythicMob(mob.getUniqueId())) {
             String internalMobType = DeathMessages.plugin.mythicMobs.getAPIHelper().getMythicMobInstance(mob).getMobType();
-            Bukkit.broadcastMessage("is myth - " + internalMobType);
+            //Bukkit.broadcastMessage("is myth - " + internalMobType);
             msgs = sortList(getPlayerDeathMessages().getStringList("Custom-Mobs.Mythic-Mobs." + internalMobType + "." + affiliation + "." + damageCause), pm.getPlayer(), mob);
         } else {
             msgs = sortList(getPlayerDeathMessages().getStringList(cMode + "." + affiliation + "." + damageCause), pm.getPlayer(), mob);
