@@ -231,9 +231,11 @@ public class DeathMessages extends FoliaWrappedJavaPlugin {
     private void checkGameRules() {
         if (Settings.getInstance().getConfig().getBoolean("Disable-Default-Messages") && majorVersion() >= 13) {
             for (World w : Bukkit.getWorlds()) {
-                if (w.getGameRuleValue(GameRule.SHOW_DEATH_MESSAGES).equals(true)) {
-                    getScheduler().runTask(() -> w.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false));
-                }
+                getScheduler().runTask(() -> {
+                    if (Boolean.TRUE.equals(w.getGameRuleValue(GameRule.SHOW_DEATH_MESSAGES))) {
+                        w.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
+                    }
+                });
             }
         }
     }
