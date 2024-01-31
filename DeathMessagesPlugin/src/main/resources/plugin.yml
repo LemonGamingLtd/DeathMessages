@@ -15,7 +15,5 @@ author: Joshb_
 commands:
   deathmessages:
     description: Main plugin command
-    aliases: [dm]
   deathmessagestoggle:
     description: Alias for /dm toggle in one command
-    aliases: [dmt, dmtoggle]
