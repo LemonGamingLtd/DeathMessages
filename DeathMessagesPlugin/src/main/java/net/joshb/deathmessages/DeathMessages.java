@@ -22,7 +22,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -84,8 +83,7 @@ public class DeathMessages extends FoliaWrappedJavaPlugin {
     }
 
     public static int majorVersion() {
-        return Integer.parseInt(serverVersion().replace("1_", "")
-                .replaceAll("_R\\d", "").replaceAll("v", ""));
+        return 20;
     }
 
     private void initializeConfigs() {
