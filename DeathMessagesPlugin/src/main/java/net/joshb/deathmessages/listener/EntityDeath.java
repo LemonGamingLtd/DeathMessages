@@ -27,7 +27,7 @@ import java.util.List;
 
 public class EntityDeath implements Listener {
 
-    synchronized void onEntityDeath(EntityDeathEvent e) {
+    void onEntityDeath(EntityDeathEvent e) {
         if (e.getEntity() instanceof Player && Bukkit.getOnlinePlayers().contains(e.getEntity())) {
             Player p = (Player) e.getEntity();
             PlayerManager pm = PlayerManager.getPlayer(p);
@@ -167,35 +167,35 @@ public class EntityDeath implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDeath_LOWEST(EntityDeathEvent e) {
         if (DeathMessages.eventPriority.equals(EventPriority.LOWEST)) {
-            onEntityDeath(e);
+            DeathMessages.plugin.getScheduler().runTaskAtEntity(e.getEntity(), () -> onEntityDeath(e));
         }
     }
 
     @EventHandler(priority = EventPriority.LOW)
     public void onEntityDeath_LOW(EntityDeathEvent e) {
         if (DeathMessages.eventPriority.equals(EventPriority.LOW)) {
-            onEntityDeath(e);
+            DeathMessages.plugin.getScheduler().runTaskAtEntity(e.getEntity(), () -> onEntityDeath(e));
         }
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onEntityDeath_NORMAL(EntityDeathEvent e) {
         if (DeathMessages.eventPriority.equals(EventPriority.NORMAL)) {
-            onEntityDeath(e);
+            DeathMessages.plugin.getScheduler().runTaskAtEntity(e.getEntity(), () -> onEntityDeath(e));
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onEntityDeath_HIGH(EntityDeathEvent e) {
         if (DeathMessages.eventPriority.equals(EventPriority.HIGH)) {
-            onEntityDeath(e);
+            DeathMessages.plugin.getScheduler().runTaskAtEntity(e.getEntity(), () -> onEntityDeath(e));
         }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeath_HIGHEST(EntityDeathEvent e) {
         if (DeathMessages.eventPriority.equals(EventPriority.HIGHEST)) {
-            onEntityDeath(e);
+            DeathMessages.plugin.getScheduler().runTaskAtEntity(e.getEntity(), () -> onEntityDeath(e));
         }
     }
 
